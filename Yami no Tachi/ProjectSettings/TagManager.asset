@@ -2,17 +2,17 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Piso
   - Water
   - UI
-  - 
-  - 
+  - Paredes
+  - Enemigos
   - 
   - 
   - 
@@ -38,6 +38,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Piso
+    uniqueID: 955898957
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Paredes
+    uniqueID: 811419495
+    locked: 0
+  - name: Decoraciones
+    uniqueID: 954512261
+    locked: 0
+  - name: HUD
+    uniqueID: 2466544897
+    locked: 0
+  m_RenderingLayers:
+  - Default
