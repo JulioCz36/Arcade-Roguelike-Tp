@@ -1,15 +1,22 @@
 using UnityEngine;
 
-public class scr_herir : MonoBehaviour {
+public class scr_herir : MonoBehaviour
+{
     [Header("Configuracion")]
-    [SerializeField] int dano= 1;
+    [SerializeField] int dano = 1;
+    [SerializeField] private float damageCooldown = 5f;
+    private float lastDamageTime;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) {
-            scr_jugador jugador = collision.gameObject.GetComponent<scr_jugador>();
-            jugador.modificarCorazones(-dano);
-            Debug.Log("Daño reañizado " + dano);
+        if (collision.CompareTag("Player") && Time.time > lastDamageTime + damageCooldown)
+        {
+            scr_jugador player = collision.GetComponent<scr_jugador>();
+            if (player != null)
+            {
+                player.modificarCorazones(-dano);
+                lastDamageTime = Time.time;
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class scr_jugador : MonoBehaviour
 {
     [Header("Configuracion")]
-    [SerializeField] private int corazones = 4;
+    [SerializeField] private int corazones = 3;
     [SerializeField] private UnityEvent<int> OnLivesChanged;
 
     private void Start()

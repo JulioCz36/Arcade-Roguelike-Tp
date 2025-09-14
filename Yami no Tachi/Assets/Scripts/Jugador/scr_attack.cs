@@ -17,7 +17,6 @@ public class scr_attack : MonoBehaviour {
     }
 
     void Atacar(){
-        // Activo el ataque
         mi_animator.SetTrigger("attack");
     }
 
