@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe44ddd3185735468cc1cc4fa96b9f5, type: 3}
+  m_Name: JugadorData
+  m_EditorClassIdentifier: 
+  corazones: 2
+  velocidad: 5
+  fuerzaSalto: 10
+  dano: 1
+  slashPrefab: {fileID: 950278801356973418, guid: 1214b18cc1e71ae46967ac747bb1952e, type: 3}

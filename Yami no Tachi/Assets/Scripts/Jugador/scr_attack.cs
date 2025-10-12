@@ -3,14 +3,14 @@ using UnityEngine;
 public class scr_attack : MonoBehaviour
 {
 
+    private scr_jugador jugador;
     private Animator mi_animator;
     private bool isAttacking = false;
 
-    [Header("Efecto de corte")]
-    public GameObject slashPrefab;  
     public Transform attackPoint;
 
     private void OnEnable(){
+        jugador = GetComponentInParent<scr_jugador>();
         mi_animator = GetComponent<Animator>();
     }
 
@@ -27,7 +27,7 @@ public class scr_attack : MonoBehaviour
         isAttacking = true;
         mi_animator.SetTrigger("attack");
 
-        GameObject slash = Instantiate(slashPrefab, attackPoint.position, attackPoint.rotation, attackPoint);
+        GameObject slash = Instantiate(jugador.Datos.slashPrefab, attackPoint.position, attackPoint.rotation, attackPoint);
 
         float duracion = mi_animator.GetCurrentAnimatorStateInfo(0).length;
         Destroy(slash, duracion);

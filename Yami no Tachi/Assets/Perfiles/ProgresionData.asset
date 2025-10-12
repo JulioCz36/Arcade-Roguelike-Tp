@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca97ba0921b5e2f478c4c1f2ae12f580, type: 3}
+  m_Name: ProgresionData
+  m_EditorClassIdentifier: 
+  fragmentosNecesarios:
+  - fragmento_1
+  - fragmento_2
+  - fragmento_3
+  - fragmento_4
+  - fragmento_5

@@ -3,24 +3,26 @@ using UnityEngine.Events;
 
 public class scr_jugador : MonoBehaviour
 {
-    [Header("Configuracion")]
-    [SerializeField] private int corazones = 3;
+    [Header("Datos del jugador")]
+    [SerializeField] private JugadorDAta data;
+
     [SerializeField] private UnityEvent<int> OnLivesChanged;
     [SerializeField] private MenuCondicion menuGameOver;
 
+
+    public JugadorDAta Datos => data;
     private void Start()
     {
-        OnLivesChanged.Invoke(corazones);
+        OnLivesChanged.Invoke(data.corazones);
 
     }
     public void modificarCorazones(int dano)
     {
-        corazones += dano;
-        if (corazones <= 0)
+        data.corazones += dano;
+        if (data.corazones <= 0)
         {
             menuGameOver.Activar();
-            //Destroy(gameObject);
         }
-        OnLivesChanged.Invoke(corazones);
+        OnLivesChanged.Invoke(data.corazones);
     }
 }

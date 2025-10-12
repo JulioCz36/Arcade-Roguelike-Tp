@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class scr_mover : MonoBehaviour
 {
-    [Header("Configuraciones")]
-    [SerializeField] float velocidad = 5f;
-
-    private float moverHorizontal;
+    private scr_jugador jugador;
     private Rigidbody2D mi_rb2d;
     private Animator mi_animator;
+    private float moverHorizontal;
 
     private void OnEnable()
     {
+        jugador = GetComponentInParent<scr_jugador>();
+
         mi_rb2d = GetComponent<Rigidbody2D>();
         mi_animator = GetComponent<Animator>();
     }
@@ -28,7 +28,7 @@ public class scr_mover : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 nuevaVel = mi_rb2d.linearVelocity;
-        nuevaVel.x = moverHorizontal * velocidad;
+        nuevaVel.x = moverHorizontal * jugador.Datos.velocidad;
         mi_rb2d.linearVelocity = nuevaVel;
     }
 }

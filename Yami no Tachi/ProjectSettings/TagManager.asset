@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Piso
   - Enemigo
+  - Piso
+  - Pilar
   layers:
   - Default
   - TransparentFX
@@ -14,11 +15,11 @@ TagManager:
   - Water
   - UI
   - Piso
-  - 
+  - Paredes
   - FloorPoint
   - Hurt
   - Hit
-  - 
+  - Interacciones
   - 
   - 
   - 
@@ -40,13 +41,16 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Decoraciones
+  - name: Atras
     uniqueID: 954512261
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Piso
+  - name: Frente
+    uniqueID: 971951693
+    locked: 0
+  - name: Plataforma
     uniqueID: 955898957
     locked: 0
   m_RenderingLayers:
