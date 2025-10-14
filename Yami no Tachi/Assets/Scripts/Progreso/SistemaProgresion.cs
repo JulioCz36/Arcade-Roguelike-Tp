@@ -13,6 +13,13 @@ public class SistemaProgresion : MonoBehaviour
     public delegate void FragmentoRecolectadoHandler(string nombreFragmento);
     public event FragmentoRecolectadoHandler OnFragmentoRecolectado;
 
+    [Header("UI Victoria")]
+    [SerializeField] private MenuCondicion menuYouWin;
+
+    [Header("UI Derrota")]
+    [SerializeField] private MenuCondicion menuGameOver;
+
+
     private void Awake()
     {
         if (Instancia != null && Instancia != this)
@@ -29,14 +36,8 @@ public class SistemaProgresion : MonoBehaviour
         if (!fragmentosRecolectados.Contains(nombreFragmento))
         {
             fragmentosRecolectados.Add(nombreFragmento);
-            Debug.Log($"Fragmento {nombreFragmento} recolectado!");
 
             OnFragmentoRecolectado?.Invoke(nombreFragmento);
-
-            if (VerificarProgreso())
-            {
-                Debug.Log("Todos los fragmentos recolectados");
-            }
         }
     }
 
@@ -49,4 +50,14 @@ public class SistemaProgresion : MonoBehaviour
         }
         return true;
     }
+
+    public void MarcarVictoria()
+    {
+        menuYouWin.Activar();
+    }
+    public void MarcarDerrota()
+    {
+        menuGameOver.Activar();
+    }
+
 }

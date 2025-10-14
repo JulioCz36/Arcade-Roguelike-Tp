@@ -5,24 +5,24 @@ public class scr_jugador : MonoBehaviour
 {
     [Header("Datos del jugador")]
     [SerializeField] private JugadorDAta data;
+    private int corazones;
 
     [SerializeField] private UnityEvent<int> OnLivesChanged;
-    [SerializeField] private MenuCondicion menuGameOver;
-
 
     public JugadorDAta Datos => data;
     private void Start()
     {
         OnLivesChanged.Invoke(data.corazones);
+        corazones = data.corazones;
 
     }
     public void modificarCorazones(int dano)
     {
-        data.corazones += dano;
-        if (data.corazones <= 0)
+        corazones += dano;
+        if (corazones <= 0)
         {
-            menuGameOver.Activar();
+            SistemaProgresion.Instancia.MarcarDerrota();
         }
-        OnLivesChanged.Invoke(data.corazones);
+        OnLivesChanged.Invoke(corazones);
     }
 }

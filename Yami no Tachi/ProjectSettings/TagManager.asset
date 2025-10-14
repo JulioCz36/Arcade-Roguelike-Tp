@@ -7,6 +7,9 @@ TagManager:
   - Enemigo
   - Piso
   - Pilar
+  - Pared
+  - SecondZone
+  - MainZone
   layers:
   - Default
   - TransparentFX
@@ -20,9 +23,9 @@ TagManager:
   - Hurt
   - Hit
   - Interacciones
-  - 
-  - 
-  - 
+  - WallPoint
+  - Wall
+  - Trampas
   - 
   - 
   - 

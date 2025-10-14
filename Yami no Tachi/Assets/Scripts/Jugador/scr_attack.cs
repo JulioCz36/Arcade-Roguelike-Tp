@@ -5,7 +5,6 @@ public class scr_attack : MonoBehaviour
 
     private scr_jugador jugador;
     private Animator mi_animator;
-    private bool isAttacking = false;
 
     public Transform attackPoint;
 
@@ -16,7 +15,8 @@ public class scr_attack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && !isAttacking)
+
+        if (Input.GetButtonDown("Fire1") && !jugador.Datos.estaAtacando)
         {
             Atacar();
         }
@@ -24,7 +24,7 @@ public class scr_attack : MonoBehaviour
 
     void Atacar()
     {
-        isAttacking = true;
+        jugador.Datos.estaAtacando = true;
         mi_animator.SetTrigger("attack");
 
         GameObject slash = Instantiate(jugador.Datos.slashPrefab, attackPoint.position, attackPoint.rotation, attackPoint);
@@ -35,7 +35,7 @@ public class scr_attack : MonoBehaviour
 
     public void TerminarAtaque()
     {
-        isAttacking = false;
+        jugador.Datos.estaAtacando = false;
     }
 
 }

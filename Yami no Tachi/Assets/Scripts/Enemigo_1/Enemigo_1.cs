@@ -20,7 +20,6 @@ public class Enemigo_1 : MonoBehaviour
     [Header("Vida")]
     [SerializeField] int vidaMax = 3;
     private int vidaActual;
-    [SerializeField] private MenuCondicion menuYouWin;
 
     private RaycastHit2D hit;
     private GameObject target;
@@ -68,7 +67,6 @@ public class Enemigo_1 : MonoBehaviour
         vidaActual -= cantidad;
         if (vidaActual <= 0)
         {
-            menuYouWin.Activar();
             Destroy(gameObject);
         }
     }
