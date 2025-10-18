@@ -8,28 +8,27 @@ public class LanzaFuegos : MonoBehaviour
     public Transform puntoSalida;
     public float tiempoEntreDisparos = 5f;
 
-    private bool puedeDisparar = true;
     private Animator anim;
-    private void Start()
+    private Coroutine rutinaDisparo;
+
+    private void OnEnable()
     {
         anim = GetComponent<Animator>();
+        rutinaDisparo = StartCoroutine(ControlarDisparo());
     }
-
-    public void Update()
+    private void OnDisable()
     {
-        if (puedeDisparar)
-            StartCoroutine(ControlarDisparo());
+        if (rutinaDisparo != null)
+            StopCoroutine(rutinaDisparo);
     }
 
     private IEnumerator ControlarDisparo()
     {
-        puedeDisparar = false;
-
-        anim.SetTrigger("lanzar");
-
-        yield return new WaitForSeconds(tiempoEntreDisparos);
-
-        puedeDisparar = true;
+        while (true)
+        {
+            yield return new WaitForSeconds(tiempoEntreDisparos);
+            anim.SetTrigger("lanzar");
+        }
     }
     public void Disparar()
     {
