@@ -3,7 +3,6 @@ using UnityEngine;
 public class scr_mover : MonoBehaviour
 {
     private scr_jugador jugador;
-    private scr_attack ataque;
     private Rigidbody2D mi_rb2d;
     private Animator mi_animator;
     private float moverHorizontal;
@@ -11,7 +10,6 @@ public class scr_mover : MonoBehaviour
     private void OnEnable()
     {
         jugador = GetComponentInParent<scr_jugador>();
-        ataque = GetComponentInParent<scr_attack>();
 
         mi_rb2d = GetComponent<Rigidbody2D>();
         mi_animator = GetComponent<Animator>();
@@ -35,8 +33,15 @@ public class scr_mover : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!jugador.Datos.sePuedeMover) return;
+
         Vector2 nuevaVel = mi_rb2d.linearVelocity;
         nuevaVel.x = moverHorizontal * jugador.Datos.velocidad;
         mi_rb2d.linearVelocity = nuevaVel;
+    }
+
+    public void Rebotar(Vector2 puntoGolpe)
+    {
+        mi_rb2d.linearVelocity = new Vector2(jugador.Datos.velocidadRebote.x * puntoGolpe.x, jugador.Datos.velocidadRebote.y);
     }
 }

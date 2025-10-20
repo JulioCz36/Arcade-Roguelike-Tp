@@ -13,6 +13,9 @@ public class JugadorDAta : ScriptableObject
 
     [Header("Movimiento")]
     public float velocidad = 5f;
+    public bool sePuedeMover = true;
+    public Vector2 velocidadRebote;
+    public float tiempoPerdidaControl;
 
     [Header("Salto")]
     public float fuerzaSalto = 5f;

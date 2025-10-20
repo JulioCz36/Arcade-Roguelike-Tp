@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemigo_1 : MonoBehaviour
@@ -166,10 +165,5 @@ public class Enemigo_1 : MonoBehaviour
             Debug.DrawRay(rayCast.position, Vector2.left * rayCastLength, Color.red);
 
         }
-    }
-
-    void TriggerCooling()
-    {
-        colldown = true;
     }
 }

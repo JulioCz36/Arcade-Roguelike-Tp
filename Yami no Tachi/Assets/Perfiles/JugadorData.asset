@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fe44ddd3185735468cc1cc4fa96b9f5, type: 3}
   m_Name: JugadorData
   m_EditorClassIdentifier: 
-  estaAtacando: 0
+  estaAtacando: 1
   enSuelo: 0
   estaEnPared: 0
   corazones: 3
   velocidad: 5
+  sePuedeMover: 1
+  velocidadRebote: {x: 10, y: 10}
+  tiempoPerdidaControl: 1
   fuerzaSalto: 10
   dano: 1
   slashPrefab: {fileID: 950278801356973418, guid: 1214b18cc1e71ae46967ac747bb1952e, type: 3}

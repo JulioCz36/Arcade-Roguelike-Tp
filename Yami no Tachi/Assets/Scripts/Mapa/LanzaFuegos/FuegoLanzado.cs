@@ -29,7 +29,12 @@ public class FuegoLanzado : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.SendMessageUpwards("modificarCorazones", -1);
+            scr_jugador jugador = other.GetComponentInParent<scr_jugador>();
+            if (jugador != null)
+            {
+                Vector2 direccionGolpe = (other.transform.position - transform.position).normalized;
+                jugador.modificarCorazones(-1, direccionGolpe);
+            }
         }
         anim.SetTrigger("colisiono");
     }

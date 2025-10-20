@@ -9,7 +9,12 @@ public class scr_herir : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.SendMessageUpwards("modificarCorazones", -dano);
+            scr_jugador jugador = collision.GetComponentInParent<scr_jugador>();
+            if (jugador != null)
+            {
+                Vector2 direccionGolpe = (collision.transform.position - transform.position).normalized;
+                jugador.modificarCorazones(-dano, direccionGolpe);
+            }
         }
     }
 }
