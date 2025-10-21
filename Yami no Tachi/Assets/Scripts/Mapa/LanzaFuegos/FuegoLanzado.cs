@@ -29,7 +29,7 @@ public class FuegoLanzado : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            scr_jugador jugador = other.GetComponentInParent<scr_jugador>();
+            Jugador jugador = other.GetComponentInParent<Jugador>();
             if (jugador != null)
             {
                 Vector2 direccionGolpe = (other.transform.position - transform.position).normalized;

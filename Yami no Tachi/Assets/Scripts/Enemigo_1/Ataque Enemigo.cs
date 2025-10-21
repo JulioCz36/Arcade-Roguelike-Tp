@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class scr_herir : MonoBehaviour
+public class AtaqueEnemigo : MonoBehaviour
 {
     [Header("Configuracion")]
     [SerializeField] int dano = 1;
@@ -9,7 +9,7 @@ public class scr_herir : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            scr_jugador jugador = collision.GetComponentInParent<scr_jugador>();
+            Jugador jugador = collision.GetComponentInParent<Jugador>();
             if (jugador != null)
             {
                 Vector2 direccionGolpe = (collision.transform.position - transform.position).normalized;
@@ -18,4 +18,3 @@ public class scr_herir : MonoBehaviour
         }
     }
 }
-

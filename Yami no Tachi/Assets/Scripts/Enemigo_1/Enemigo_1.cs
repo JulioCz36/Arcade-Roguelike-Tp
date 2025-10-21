@@ -2,168 +2,38 @@ using UnityEngine;
 
 public class Enemigo_1 : MonoBehaviour
 {
-    [Header("Detección y Ataque")]
-    public Transform rayCast;
-    public LayerMask layerMask;
-    public float rayCastLength;
-    public float attackDistance;
-    public float moveSpeed;
-    public float timer;
-
-    [Header("Patrulla")]
-    [SerializeField] float patrullaVel = 2f;
-    [SerializeField] float tiempoCambioDir = 3f;
-    private float contadorDir;
-    private bool patrullandoDerecha = true;
 
     [Header("Vida")]
-    [SerializeField] int vidaMax = 3;
-    private int vidaActual;
+    [SerializeField] private int vida = 3;
 
-    private RaycastHit2D hit;
-    private GameObject target;
+    [Header("Retroceso")]
+    [SerializeField] private Vector2 fuerzaRetroceso;
+
+    private Rigidbody2D rb2d;
     private Animator animator;
-    private float distance;
-    private bool attackMode;
-    private bool inRange;
-    private bool colldown;
-    private float intTimer;
 
-    void Start()
+    private void Start()
     {
+        rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        intTimer = timer;
-        contadorDir = tiempoCambioDir;
-        vidaActual = vidaMax;
     }
 
-    void Update()
+    public void RecibirDanio(int dano, Transform sender)
     {
-        if (inRange)
-        {
-            hit = Physics2D.Raycast(rayCast.position, Vector2.left, rayCastLength, layerMask);
-            RaycastDebugger();
-        }
+        vida -= dano;
+        Retroceso(sender);
 
-        if (hit.collider != null)
-        {
-            EnemyLogic();
-        }
-        else
-        {
-            inRange = false;
-            attackMode = false;
-        }
-        if (!inRange)
-        {
-            StopAttack();
-            Patrullar();
-        }
-    }
-
-    public void RecibirDanio(int cantidad)
-    {
-        vidaActual -= cantidad;
-        if (vidaActual <= 0)
-        {
+        if (vida <= 0)
             Destroy(gameObject);
-        }
     }
 
-    void EnemyLogic()
+    private void Retroceso(Transform sender)
     {
-        distance = Vector2.Distance(transform.position, target.transform.position);
+        Vector2 direccion = (transform.position - sender.position).normalized;
 
-        if (distance > attackDistance)
-        {
-            Move();
-            StopAttack();
-        }
-        else if (attackDistance >= distance && colldown == false)
-        {
-            Attack();
-        }
+        Vector2 fuerza = new(Mathf.Sign(direccion.x) * fuerzaRetroceso.x, fuerzaRetroceso.y);
 
-        if (colldown)
-        {
-            Cooldown();
-            animator.SetBool("attack", false);
-        }
-    }
-
-    void Move()
-    {
-        animator.SetBool("walk", true);
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("atk"))
-        {
-            Vector2 targetPosition = new Vector2(target.transform.position.x, transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-        }
-    }
-    void Cooldown() { 
-    
-        timer -= Time.deltaTime;
-        if (timer <= 0 && colldown && attackMode)
-        {
-            colldown = false;
-            timer = intTimer;
-        }
-    }
-
-    void StopAttack()
-    {
-        timer = intTimer;
-        attackMode = false;
-
-        animator.SetBool("attack", false);
-    }
-
-    void Patrullar()
-    {
-        animator.SetBool("walk", true);
-
-        float dir = patrullandoDerecha ? 1f : -1f;
-        transform.Translate(Vector2.right * dir * patrullaVel * Time.deltaTime);
-
-        contadorDir -= Time.deltaTime;
-        if (contadorDir <= 0f)
-        {
-            patrullandoDerecha = !patrullandoDerecha;
-            transform.localScale = new Vector3(patrullandoDerecha ? 3 : -3, 3, 3);
-            contadorDir = tiempoCambioDir;
-        }
-    }
-
-    void Attack()
-    {
-        timer = intTimer;
-        attackMode = true;
-
-        animator.SetBool("walk", false);
-        animator.SetBool("attack", true);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            target = collision.gameObject;
-            inRange = true;
-        }
-    }
-
-    void RaycastDebugger()
-    {
-
-        if (distance > attackDistance)
-        {
-
-            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLength, Color.green);
-        }
-        else if (distance < attackDistance)
-        {
-            Debug.DrawRay(rayCast.position, Vector2.left * rayCastLength, Color.red);
-
-        }
+        animator.SetTrigger("hit");
+        rb2d.AddForce(fuerza, ForceMode2D.Impulse);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class WallClimb : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private scr_jugador jugador;
+    private Jugador jugador;
 
     private bool isTouchingWall;
     private bool canWallJump = true;
@@ -15,7 +15,7 @@ public class WallClimb : MonoBehaviour
 
     private void Start()
     {
-        jugador = GetComponentInParent<scr_jugador>();
+        jugador = GetComponentInParent<Jugador>();
         rb = jugador.GetComponent<Rigidbody2D>();
     }
 

@@ -2,21 +2,21 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class scr_jugador : MonoBehaviour
+public class Jugador : MonoBehaviour
 {
     [Header("Datos del jugador")]
     [SerializeField] private JugadorDAta data;
     [SerializeField] private UnityEvent<int> OnLivesChanged;
     public JugadorDAta Datos => data;
-    
+
     private int corazones;
     private Animator animator;
-    private scr_mover movimiento;
+    private MovimientoJugador movimiento;
     private void Start()
     {
         OnLivesChanged.Invoke(data.corazones);
         corazones = data.corazones;
-        movimiento = GetComponent<scr_mover>();
+        movimiento = GetComponent<MovimientoJugador>();
         animator = GetComponent<Animator>();
 
     }
@@ -46,7 +46,7 @@ public class scr_jugador : MonoBehaviour
 
     private IEnumerator DesactivarCollision()
     {
-        Physics2D.IgnoreLayerCollision(9,10,true);
+        Physics2D.IgnoreLayerCollision(9, 10, true);
         yield return new WaitForSeconds(data.tiempoPerdidaControl);
         Physics2D.IgnoreLayerCollision(9, 10, false);
     }

@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class EspadaJugador : MonoBehaviour
 {
-    private scr_jugador jugador;
+    private Jugador jugador;
 
     private void Start()
     {
-        jugador = GetComponentInParent<scr_jugador>();
+        jugador = GetComponentInParent<Jugador>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemigo"))
         {
-            collision.SendMessageUpwards("RecibirDanio", jugador.Datos.dano);
+            Enemigo_1 enemigo = collision.GetComponentInParent<Enemigo_1>();
+            if (enemigo != null)
+            {
+  
+                enemigo.RecibirDanio(jugador.Datos.dano, jugador.transform);
+            }
         }
     }
 }

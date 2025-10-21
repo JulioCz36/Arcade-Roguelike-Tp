@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class scr_mover : MonoBehaviour
+public class MovimientoJugador : MonoBehaviour
 {
-    private scr_jugador jugador;
+    private Jugador jugador;
     private Rigidbody2D mi_rb2d;
     private Animator mi_animator;
     private float moverHorizontal;
 
     private void OnEnable()
     {
-        jugador = GetComponentInParent<scr_jugador>();
+        jugador = GetComponentInParent<Jugador>();
 
         mi_rb2d = GetComponent<Rigidbody2D>();
         mi_animator = GetComponent<Animator>();
@@ -20,12 +20,12 @@ public class scr_mover : MonoBehaviour
         if (jugador.Datos.estaAtacando)
         {
             mi_animator.SetBool("isIdle", true);
-            return; 
+            return;
         }
 
         moverHorizontal = Input.GetAxisRaw("Horizontal");
 
-        if (moverHorizontal != 0 )
+        if (moverHorizontal != 0)
             transform.localScale = new Vector3(Mathf.Sign(moverHorizontal), 1, 1);
 
         mi_animator.SetBool("isIdle", Mathf.Abs(moverHorizontal) < 0.1f);

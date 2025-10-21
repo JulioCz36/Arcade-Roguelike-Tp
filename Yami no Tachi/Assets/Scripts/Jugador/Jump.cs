@@ -3,15 +3,13 @@ using UnityEngine;
 public class Jump : MonoBehaviour
 {
 
-    private scr_jugador jugador;
-    private scr_attack ataque;
+    private Jugador jugador;
     private Rigidbody2D miRigidbody2D;
     private bool puedoSaltar = false;
 
     private void OnEnable()
     {
-        jugador = GetComponentInParent<scr_jugador>();
-        ataque = GetComponentInParent<scr_attack>();
+        jugador = GetComponentInParent<Jugador>();
         miRigidbody2D = GetComponent<Rigidbody2D>();
     }
     void Update()

@@ -3,12 +3,12 @@ using UnityEngine;
 public class GroundCheck : MonoBehaviour
 {
     private Jump jumpScript;
-    private scr_jugador jugador;
+    private Jugador jugador;
 
     private void Start()
     {
         jumpScript = GetComponentInParent<Jump>();
-        jugador = GetComponentInParent<scr_jugador>();
+        jugador = GetComponentInParent<Jugador>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

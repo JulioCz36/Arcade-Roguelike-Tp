@@ -206,12 +206,13 @@ GameObject:
   - component: {fileID: 8198574590439728280}
   - component: {fileID: 7515220795586633253}
   - component: {fileID: 4692637774887646574}
-  - component: {fileID: 4346626186532995109}
+  - component: {fileID: 4509550651897273070}
   - component: {fileID: 458822298258173779}
-  - component: {fileID: 2937340128460459677}
-  - component: {fileID: 5461050824163994775}
+  - component: {fileID: 7858293251784794659}
+  - component: {fileID: 7904347885158517639}
+  - component: {fileID: 6053885327218900858}
   - component: {fileID: 6839594872338789418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jugador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,18 +321,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &4346626186532995109
-MonoBehaviour:
+--- !u!70 &4509550651897273070
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7916559299803194822}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a9e371426a7a964a91adc38c6183ac3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.028992385, y: -0.04141763}
+  m_Size: {x: 0.6106743, y: 0.9282095}
+  m_Direction: 0
 --- !u!95 &458822298258173779
 Animator:
   serializedVersion: 7
@@ -354,7 +380,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2937340128460459677
+--- !u!114 &7858293251784794659
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -363,20 +389,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7916559299803194822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b66567fc22f12704ab41750ef6799789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 5068867809906545495}
---- !u!114 &5461050824163994775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7916559299803194822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89844e324df9fe3408abf20190ac73c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b59582d5fb0343498761eff4c3bba8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 9eb017889e2a1b64b80d04743a54d7ec, type: 2}
@@ -384,18 +397,42 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HUB_controller, Assembly-CSharp
-        m_MethodName: actualizarVidasHUD
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  menuGameOver: {fileID: 0}
+--- !u!114 &7904347885158517639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916559299803194822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf8c5151d2746f45a5007abc1115b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 5068867809906545495}
+--- !u!114 &6053885327218900858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7916559299803194822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b9d0b25f7736da41a5d5c20a6fb5f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6839594872338789418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +471,7 @@ Transform:
   m_GameObject: {fileID: 8250112478833738202}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1264, y: -0.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -474,8 +511,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.14704454, y: 0.112110436}
-  m_Size: {x: 0.531373, y: 0.87262905}
+  m_Offset: {x: -0.02310048, y: -0.038338393}
+  m_Size: {x: 0.46664014, y: 0.82964367}
   m_Direction: 0
 --- !u!1 &8549576666975201668
 GameObject:

@@ -3,7 +3,6 @@ using UnityEngine;
 public class Pilar : MonoBehaviour
 {
     private Animator animator;
-    private scr_jugador jugador;
     private void Start()
     {
         animator = GetComponent<Animator>();

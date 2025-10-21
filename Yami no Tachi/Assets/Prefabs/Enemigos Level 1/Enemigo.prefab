@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7090254689765638289}
   - component: {fileID: 4235999273271984596}
-  - component: {fileID: 2234095507770225255}
+  - component: {fileID: 5030922869247012122}
   m_Layer: 10
   m_Name: Hitbox
   m_TagString: Untagged
@@ -79,7 +79,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.12346302, y: 0.15462127}
   m_EdgeRadius: 0
---- !u!114 &2234095507770225255
+--- !u!114 &5030922869247012122
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,88 +88,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466974247652288168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4213727bef16444f9b789d6afa4ddcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f47b4775b0fb194f8a36fe633954c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dano: 1
---- !u!1 &2938118153336236002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 416806842632206799}
-  - component: {fileID: 6601464325511542165}
-  m_Layer: 10
-  m_Name: TriggerArea
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &416806842632206799
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2938118153336236002}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 37456658356161818}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6601464325511542165
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2938118153336236002}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.21478543, y: -0.01421446}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.96769136, y: 0.11337041}
-  m_EdgeRadius: 0
 --- !u!1 &3095220456107691262
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +214,7 @@ GameObject:
   - component: {fileID: 8569176746618811651}
   - component: {fileID: 6519546320495658868}
   - component: {fileID: 7699388451120779035}
+  - component: {fileID: 3214960634238676115}
   m_Layer: 0
   m_Name: Enemigo
   m_TagString: Untagged
@@ -315,7 +238,6 @@ Transform:
   - {fileID: 7090254689765638289}
   - {fileID: 2017785502919845643}
   - {fileID: 2193683990720729031}
-  - {fileID: 416806842632206799}
   - {fileID: 942409752671983850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -435,17 +357,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203fffb180333ad4cad72fa88cfbb1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayCast: {fileID: 942409752671983850}
-  layerMask:
+  vida: 100
+  fuerzaRetroceso: {x: 6, y: 5}
+--- !u!114 &3214960634238676115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6120003320281240105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3c0649c3f17734bb4c03fcba039abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radioBusqueda: 3
+  capaJugador:
     serializedVersion: 2
-    m_Bits: 512
-  rayCastLength: 6
-  attackDistance: 0.5
-  moveSpeed: 3
-  timer: 3
-  patrullaVel: 2
-  tiempoCambioDir: 3
-  vidaMax: 3
+    m_Bits: 128
+  transformJugador: {fileID: 0}
+  velocidadMovimiento: 3
+  ditanciaMaxima: 6
+  puntoInicial: {x: 0, y: 0, z: 0}
+  mirandoDerecha: 1
+  tiempoOcupado: 0.5
+  radioAtaque: 0.63
+  tiempoEntreAtaques: 0.3
+  estadoActual: 0
 --- !u!1 &6946744761065811327
 GameObject:
   m_ObjectHideFlags: 0

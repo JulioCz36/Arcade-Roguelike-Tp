@@ -1,15 +1,15 @@
 using UnityEngine;
 
-public class scr_attack : MonoBehaviour
+public class AtaqueJugador : MonoBehaviour
 {
-
-    private scr_jugador jugador;
+    private Jugador jugador;
     private Animator mi_animator;
 
     public Transform attackPoint;
 
-    private void OnEnable(){
-        jugador = GetComponentInParent<scr_jugador>();
+    private void OnEnable()
+    {
+        jugador = GetComponentInParent<Jugador>();
         mi_animator = GetComponent<Animator>();
     }
 
@@ -37,5 +37,4 @@ public class scr_attack : MonoBehaviour
     {
         jugador.Datos.estaAtacando = false;
     }
-
 }
