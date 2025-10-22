@@ -5,27 +5,35 @@ public class GroundCheck : MonoBehaviour
     private Jump jumpScript;
     private Jugador jugador;
 
+    [Header("Configuración de suelo")]
+    public LayerMask capaSuelo;
+    public float radioDeteccion = 0.1f;
+
     private void Start()
     {
         jumpScript = GetComponentInParent<Jump>();
         jugador = GetComponentInParent<Jugador>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Piso"))
+        bool enSuelo = Physics2D.OverlapCircle(transform.position, radioDeteccion, capaSuelo);
+
+        if (enSuelo)
         {
             jumpScript.SetPuedeSaltar(true);
             jugador.Datos.enSuelo = true;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Piso"))
+        else
         {
             jumpScript.SetPuedeSaltar(false);
             jugador.Datos.enSuelo = false;
         }
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radioDeteccion);
+    } 
 }

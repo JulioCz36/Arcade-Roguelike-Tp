@@ -28,11 +28,9 @@ public class AtaqueJugador : MonoBehaviour
         mi_animator.SetTrigger("attack");
 
         GameObject slash = Instantiate(jugador.Datos.slashPrefab, attackPoint.position, attackPoint.rotation, attackPoint);
-
         float duracion = mi_animator.GetCurrentAnimatorStateInfo(0).length;
         Destroy(slash, duracion);
     }
-
     public void TerminarAtaque()
     {
         jugador.Datos.estaAtacando = false;

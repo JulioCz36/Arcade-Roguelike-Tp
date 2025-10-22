@@ -14,18 +14,18 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Mapa
   - Water
   - UI
-  - Piso
   - Jugador
-  - FloorPoint
   - Hurt
   - Hit
   - Interacciones
-  - WallPoint
-  - Wall
-  - Trampas
+  - Enemigo
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

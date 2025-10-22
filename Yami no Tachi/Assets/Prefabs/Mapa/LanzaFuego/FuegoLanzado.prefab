@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5262040703361036294}
   - component: {fileID: 5484054100730171267}
   - component: {fileID: 232107464154558235}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: FuegoLanzado
   m_TagString: Untagged
   m_Icon: {fileID: 0}

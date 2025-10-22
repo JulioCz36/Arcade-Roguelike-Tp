@@ -146,18 +146,6 @@ public class SeguirJugador : MonoBehaviour
         }
     }
 
-    private void EstadoRecuperandose()
-    {
-        rb2d.linearVelocity = Vector2.zero;
-        animator.SetBool("walk", false);
-
-        contadorOcupado -= Time.deltaTime;
-        if (contadorOcupado <= 0)
-        {
-            estadoActual = EstadosMovimiento.Siguiendo;
-        }
-    }
-
     private void EstadoOcupado()
     {
         animator.SetBool("walk", false);

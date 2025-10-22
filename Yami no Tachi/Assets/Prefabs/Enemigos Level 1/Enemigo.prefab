@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7090254689765638289}
   - component: {fileID: 4235999273271984596}
   - component: {fileID: 5030922869247012122}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2017785502919845643}
   - component: {fileID: 6155665986069218255}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Hurtbox
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0013920367, y: 0.03485105}
+  m_Offset: {x: 0.0016938001, y: 0.022769112}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -168,39 +168,8 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.15799582, y: 0.22218895}
+  m_Size: {x: 0.13274458, y: 0.18829316}
   m_EdgeRadius: 0
---- !u!1 &4120595758228024030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 942409752671983850}
-  m_Layer: 0
-  m_Name: raycast
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &942409752671983850
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120595758228024030}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.117, y: -0.019, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 37456658356161818}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6120003320281240105
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +184,7 @@ GameObject:
   - component: {fileID: 6519546320495658868}
   - component: {fileID: 7699388451120779035}
   - component: {fileID: 3214960634238676115}
+  - component: {fileID: 3487669197130577629}
   m_Layer: 0
   m_Name: Enemigo
   m_TagString: Untagged
@@ -237,8 +207,6 @@ Transform:
   m_Children:
   - {fileID: 7090254689765638289}
   - {fileID: 2017785502919845643}
-  - {fileID: 2193683990720729031}
-  - {fileID: 942409752671983850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9219029126421403048
@@ -357,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 203fffb180333ad4cad72fa88cfbb1f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 100
+  vida: 4
   fuerzaRetroceso: {x: 6, y: 5}
 --- !u!114 &3214960634238676115
 MonoBehaviour:
@@ -374,55 +342,23 @@ MonoBehaviour:
   radioBusqueda: 3
   capaJugador:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   transformJugador: {fileID: 0}
   velocidadMovimiento: 3
-  ditanciaMaxima: 6
+  ditanciaMaxima: 5
   puntoInicial: {x: 0, y: 0, z: 0}
   mirandoDerecha: 1
   tiempoOcupado: 0.5
   radioAtaque: 0.63
-  tiempoEntreAtaques: 0.3
+  tiempoEntreAtaques: 2
   estadoActual: 0
---- !u!1 &6946744761065811327
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2193683990720729031}
-  - component: {fileID: 2028930879718003936}
-  m_Layer: 8
-  m_Name: FloorPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2193683990720729031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6946744761065811327}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 37456658356161818}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &2028930879718003936
+--- !u!61 &3487669197130577629
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6946744761065811327}
+  m_GameObject: {fileID: 6120003320281240105}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -450,15 +386,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00058090687, y: -0.07043714}
+  m_Offset: {x: 0.00037093088, y: 0.038970716}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.1573048, y: 0.01672237}
+  m_Size: {x: 0.15753108, y: 0.2343648}
   m_EdgeRadius: 0

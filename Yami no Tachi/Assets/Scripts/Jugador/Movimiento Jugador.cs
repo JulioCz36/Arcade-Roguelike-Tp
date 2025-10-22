@@ -17,11 +17,7 @@ public class MovimientoJugador : MonoBehaviour
 
     private void Update()
     {
-        if (jugador.Datos.estaAtacando)
-        {
-            mi_animator.SetBool("isIdle", true);
-            return;
-        }
+        if (!jugador.Datos.sePuedeMover || jugador.Datos.estaAtacando) return;
 
         moverHorizontal = Input.GetAxisRaw("Horizontal");
 
@@ -33,11 +29,27 @@ public class MovimientoJugador : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!jugador.Datos.sePuedeMover) return;
+        if (!jugador.Datos.sePuedeMover || jugador.Datos.estaAtacando)
+        {
+            Vector2 vel = mi_rb2d.linearVelocity;
+            vel.x = 0;
+            mi_rb2d.linearVelocity = vel;
+            return;
+        }
 
         Vector2 nuevaVel = mi_rb2d.linearVelocity;
         nuevaVel.x = moverHorizontal * jugador.Datos.velocidad;
         mi_rb2d.linearVelocity = nuevaVel;
+    }
+
+    public void EmpezarRespawn()
+    {
+        jugador.Datos.sePuedeMover = false;
+    }
+
+    public void TerminarRespawn()
+    {
+        jugador.Datos.sePuedeMover = true;
     }
 
     public void Rebotar(Vector2 puntoGolpe)

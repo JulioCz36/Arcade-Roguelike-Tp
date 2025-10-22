@@ -7,6 +7,11 @@ public class HUB_controller : MonoBehaviour {
     [SerializeField] GameObject contenedorIconosVida;
     [SerializeField] Sprite corazonLleno;
     [SerializeField] Sprite corazonVacio;
+
+    private void Start() {
+        actualizarVidasHUD(3);
+    }
+
     public void actualizarVidasHUD(int vidas) {
         if (EstaVacioContenedor()) {
             CargarContenedor(vidas);

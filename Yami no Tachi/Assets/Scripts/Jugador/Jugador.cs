@@ -14,25 +14,17 @@ public class Jugador : MonoBehaviour
     private MovimientoJugador movimiento;
     private void Start()
     {
-        OnLivesChanged.Invoke(data.corazones);
         corazones = data.corazones;
         movimiento = GetComponent<MovimientoJugador>();
         animator = GetComponent<Animator>();
 
-    }
-    public void modificarCorazones(int dano)
-    {
-        corazones += dano;
-        if (corazones <= 0)
-        {
-            SistemaProgresion.Instancia.MarcarDerrota();
-        }
         OnLivesChanged.Invoke(corazones);
     }
 
     public void modificarCorazones(int dano, Vector2 direccion)
     {
         corazones += dano;
+
         animator.SetTrigger("hit");
         StartCoroutine(PerderControl());
         StartCoroutine(DesactivarCollision());

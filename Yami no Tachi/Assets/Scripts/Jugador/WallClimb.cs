@@ -1,9 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WallClimb : MonoBehaviour
 {
     private Rigidbody2D rb;
     private Jugador jugador;
+
+    [Header("Detección de pared")]
+    [SerializeField] private float radioDeteccion = 0.2f;
+    [SerializeField] private LayerMask capaPared;
 
     private bool isTouchingWall;
     private bool canWallJump = true;
@@ -21,10 +26,18 @@ public class WallClimb : MonoBehaviour
 
     private void Update()
     {
+        Collider2D paredDetectada = Physics2D.OverlapCircle(transform.position, radioDeteccion, capaPared);
+        isTouchingWall = paredDetectada != null;
+
         if (isTouchingWall)
+        {
+            wallSide = (transform.position.x < jugador.transform.position.x) ? -1 : 1;
             wallCoyoteTimer = wallCoyoteTime;
+        }
         else
+        {
             wallCoyoteTimer -= Time.deltaTime;
+        }
 
         if ((isTouchingWall || wallCoyoteTimer > 0f) && !jugador.Datos.enSuelo)
         {
@@ -48,23 +61,10 @@ public class WallClimb : MonoBehaviour
             jugador.Datos.estaEnPared = false;
             rb.gravityScale = jugador.Datos.gravedadNormal;
 
-            Vector2 direccionSalto;
+            Vector2 direccionSalto = new Vector2(-wallSide, 1f).normalized;
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(direccionSalto * jugador.Datos.fuerzaSaltoPared, ForceMode2D.Impulse);
 
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
-
-            if (vertical > 0.5f)
-            {
-                direccionSalto = new Vector2(0f, 1.2f).normalized;
-                rb.linearVelocity = Vector2.zero;
-                rb.AddForce(direccionSalto * jugador.Datos.fuerzaSaltoPared * 1.3f, ForceMode2D.Impulse);
-            }
-            else
-            {
-                direccionSalto = new Vector2(-wallSide, 1f).normalized;
-                rb.linearVelocity = Vector2.zero;
-                rb.AddForce(direccionSalto * jugador.Datos.fuerzaSaltoPared, ForceMode2D.Impulse);
-            }
             Invoke(nameof(ResetWallJump), 0.25f);
         }
 
@@ -75,27 +75,17 @@ public class WallClimb : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Pared"))
-        {
-            isTouchingWall = true;
-            wallSide = (collision.contacts[0].point.x < transform.position.x) ? -1 : 1;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Pared"))
-        {
-            isTouchingWall = false;
-            jugador.Datos.estaEnPared = false;
-            rb.gravityScale = jugador.Datos.gravedadNormal;
-        }
-    }
-
     private void ResetWallJump()
     {
         canWallJump = true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (transform != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, radioDeteccion);
+        }
     }
 }

@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: JugadorData
   m_EditorClassIdentifier: 
   estaAtacando: 0
-  enSuelo: 0
-  estaEnPared: 0
+  enSuelo: 1
+  estaEnPared: 1
   corazones: 3
   velocidad: 5
   sePuedeMover: 1
-  velocidadRebote: {x: 5, y: 5}
-  tiempoPerdidaControl: 1
+  velocidadRebote: {x: 7, y: 7}
+  tiempoPerdidaControl: 0.5
   fuerzaSalto: 10
   dano: 1
   slashPrefab: {fileID: 950278801356973418, guid: 1214b18cc1e71ae46967ac747bb1952e, type: 3}
   velocidadDesliz: 1.5
-  fuerzaSaltoPared: 10
+  fuerzaSaltoPared: 15
   impulsoHorizontalPared: 10
   tiempoAgarrePared: 0.2
   gravedadNormal: 3

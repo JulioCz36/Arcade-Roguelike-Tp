@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class EspadaJugador : MonoBehaviour
 {
     private Jugador jugador;
+    public static Action jugadorGolpeo;
 
     private void Start()
     {
@@ -16,7 +18,7 @@ public class EspadaJugador : MonoBehaviour
             Enemigo_1 enemigo = collision.GetComponentInParent<Enemigo_1>();
             if (enemigo != null)
             {
-  
+                jugadorGolpeo?.Invoke();
                 enemigo.RecibirDanio(jugador.Datos.dano, jugador.transform);
             }
         }
