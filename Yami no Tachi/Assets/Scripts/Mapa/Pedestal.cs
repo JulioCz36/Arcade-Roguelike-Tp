@@ -49,7 +49,7 @@ public class Pedestal : MonoBehaviour
     }
     private void Update()
     {
-        if (jugadorCerca && puedeActivarse && Input.GetAxisRaw("Vertical") > 0)
+        if (jugadorCerca && puedeActivarse && Input.GetButtonDown("Vertical"))
         {
             animator.SetTrigger("interaccion");
         }

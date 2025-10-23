@@ -31,7 +31,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.26666668
+        time: 0.11666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -52,11 +52,11 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 1709417647, guid: 5b57da16488343142b29f36457d051eb, type: 3}
-    - time: 0.13333334
+    - time: 0.1
       value: {fileID: 1764344994, guid: 5b57da16488343142b29f36457d051eb, type: 3}
-    - time: 0.26666668
+    - time: 0.2
       value: {fileID: -1514028516, guid: 5b57da16488343142b29f36457d051eb, type: 3}
-    - time: 0.4
+    - time: 0.3
       value: {fileID: 1109312272, guid: 5b57da16488343142b29f36457d051eb, type: 3}
     attribute: m_Sprite
     path: 
@@ -98,7 +98,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4166667
+    m_StopTime: 0.3166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -128,7 +128,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.26666668
+        time: 0.11666667
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -148,7 +148,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.41666666
+  - time: 0.31666666
     functionName: TerminarAtaque
     data: 
     objectReferenceParameter: {fileID: 0}

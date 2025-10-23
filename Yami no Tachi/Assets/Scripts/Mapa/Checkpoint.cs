@@ -2,21 +2,12 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public LayerMask capaCheckpoint;
-    public float radioDeteccion = 0.5f;
-
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Collider2D checkpoint = Physics2D.OverlapCircle(transform.position, radioDeteccion, capaCheckpoint);
-        if (checkpoint != null)
+        if (other.CompareTag("Player"))
         {
             RespawnManager.Instance.SetCheckpoint(transform);
+            Debug.Log("Checkpoint activado en: " + transform.position);
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radioDeteccion);
     }
 }
