@@ -1,12 +1,17 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CartelInteractivo : MonoBehaviour
 {
-    [SerializeField] private string[] lineasDialogo; 
+    [Header("Configuración")]
+    [SerializeField] private string idCartel;
+    [SerializeField] private bool desbloqueaHabilidad = false;
+    [SerializeField] private string[] lineasDialogo;
+
+    [Header("Referencias")]
     [SerializeField] private GameObject uiDialogo;
+    [SerializeField] private GameObject particula;
     [SerializeField] private Text textoDialogo;
 
     public UnityEvent onAbrirDialogo;
@@ -15,17 +20,27 @@ public class CartelInteractivo : MonoBehaviour
     private bool jugadorCerca = false;
     private bool mostrandoDialogo = false;
     private int indiceDialogo = 0;
+    private bool yaLeido = false;
 
     private void Start()
     {
         uiDialogo.SetActive(false);
         textoDialogo.gameObject.SetActive(false);
+        particula.SetActive(false);
+        
+        if (SistemaProgresion.Instancia.CartelYaLeido(idCartel))
+        {
+            yaLeido = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!yaLeido && other.CompareTag("Player"))
+        {
             jugadorCerca = true;
+            particula.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -33,6 +48,7 @@ public class CartelInteractivo : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorCerca = false;
+            particula.SetActive(false); 
             CerrarDialogo();
         }
     }
@@ -55,6 +71,10 @@ public class CartelInteractivo : MonoBehaviour
     private void MostrarDialogo()
     {
         if (uiDialogo == null || textoDialogo == null) return;
+
+        SistemaProgresion.Instancia.puedeAtacar = false;
+
+        particula.SetActive(false);
 
         mostrandoDialogo = true;
         indiceDialogo = 0;
@@ -92,6 +112,14 @@ public class CartelInteractivo : MonoBehaviour
     public void DesactivarUI()
     {
        uiDialogo.SetActive(false);
+
+       //no ataque cuando pasa de dialogo
+       SistemaProgresion.Instancia.puedeAtacar = true;
+
+        SistemaProgresion.Instancia.MarcarCartelLeido(idCartel);
+
+        if (desbloqueaHabilidad)
+            SistemaProgresion.Instancia.DesbloquearHabilidad(idCartel);
     }
 
 }

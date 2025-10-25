@@ -16,7 +16,7 @@ public class AtaqueJugador : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetButtonDown("Fire1") && !jugador.Datos.estaAtacando)
+        if (SistemaProgresion.Instancia.puedeAtacar && Input.GetButtonDown("Fire1") && !jugador.Datos.estaAtacando)
         {
             Atacar();
         }

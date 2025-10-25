@@ -23,8 +23,6 @@ MonoBehaviour:
   fuerzaSalto: 10
   dano: 1
   slashPrefab: {fileID: 950278801356973418, guid: 1214b18cc1e71ae46967ac747bb1952e, type: 3}
-  velocidadDesliz: 1.5
+  velocidadDesliz: 3
   fuerzaSaltoPared: 15
-  impulsoHorizontalPared: 10
-  tiempoAgarrePared: 0.2
   gravedadNormal: 3

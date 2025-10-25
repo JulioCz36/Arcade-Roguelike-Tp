@@ -17,7 +17,8 @@ public class MovimientoJugador : MonoBehaviour
 
     private void Update()
     {
-        if (!jugador.Datos.sePuedeMover || jugador.Datos.estaAtacando) return;
+
+        if (!jugador.Datos.sePuedeMover || jugador.Datos.estaAtacando || jugador.Datos.estaEnPared) return;
 
         moverHorizontal = Input.GetAxisRaw("Horizontal");
 

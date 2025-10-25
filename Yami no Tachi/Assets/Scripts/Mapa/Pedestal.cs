@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Pedestal : MonoBehaviour
 {
+    [SerializeField] private GameObject particula;
+
     private Pilar pilar;
 
     private bool jugadorCerca = false;
@@ -15,6 +17,7 @@ public class Pedestal : MonoBehaviour
         pilar = GameObject.FindGameObjectWithTag("Pilar").GetComponent<Pilar>();
 
         SistemaProgresion.Instancia.OnFragmentoRecolectado += RevisarProgreso;
+        particula.SetActive(false);
     }
 
     private void OnDisable()
@@ -36,14 +39,16 @@ public class Pedestal : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             jugadorCerca = true;
-            Debug.Log("Jugador cerca del pedestal");
+        }
+        if (jugadorCerca && puedeActivarse)
+        {
+            particula.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Jugador se fue");
             jugadorCerca = false;
         }
     }
@@ -51,16 +56,18 @@ public class Pedestal : MonoBehaviour
     {
         if (jugadorCerca && puedeActivarse && Input.GetButtonDown("Vertical"))
         {
+            particula.SetActive(false);
             animator.SetTrigger("interaccion");
+            puedeActivarse = false;
         }
     }
     public void FinalizarActivacion()
     {
+
         animator.SetBool("abierto", true);
     }
     public void AbrirPuerta()
     {
-        Debug.Log("Puerta abierta desde el pedestal!");
         pilar.CargarPilar(); 
     }
 }

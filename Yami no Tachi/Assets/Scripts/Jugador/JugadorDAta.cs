@@ -27,7 +27,5 @@ public class JugadorDAta : ScriptableObject
     [Header("Escalar Paredes")]
     public float velocidadDesliz = 1.5f;
     public float fuerzaSaltoPared = 7f;
-    public float impulsoHorizontalPared = 5f;
-    public float tiempoAgarrePared = 0.2f;
     public float gravedadNormal = 3f;
 }

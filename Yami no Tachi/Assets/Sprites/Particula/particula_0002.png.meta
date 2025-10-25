@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 69ac188ac5fb4ff49909ec2c271c8348
+guid: 98e24ba50524aab498d11d504e9c1765
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,45 +110,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spikes_0
+      name: particula_0002_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 6
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape:
-      - - {x: -5, y: 7}
-        - {x: -6, y: 7}
-        - {x: -6, y: 6}
-        - {x: -7, y: 6}
-        - {x: -7, y: 4}
-        - {x: -8, y: 4}
-        - {x: -8, y: 3}
-        - {x: 7, y: 3}
-        - {x: 7, y: 5}
-        - {x: 6, y: 5}
-        - {x: 6, y: 6}
-        - {x: 5, y: 6}
-        - {x: 5, y: 7}
-        - {x: 3, y: 7}
-        - {x: 3, y: 6}
-        - {x: 1, y: 6}
-        - {x: 1, y: 5}
-        - {x: 0, y: 5}
-        - {x: 0, y: 4}
-        - {x: -3, y: 4}
-        - {x: -3, y: 8}
-        - {x: -5, y: 8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20893a432a362ff4889567db76533d14
-      internalID: 1106652151
+      spriteID: bfec2141092c0f74980451fc07023c9b
+      internalID: -8704366
       vertices: []
       indices: 
       edges: []
@@ -167,7 +145,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spikes_0: 1106652151
+      particula_0002_0: -8704366
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

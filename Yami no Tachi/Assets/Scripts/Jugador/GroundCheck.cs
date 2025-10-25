@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GroundCheck : MonoBehaviour
 {
-    private Jump jumpScript;
     private Jugador jugador;
 
     [Header("Configuración de suelo")]
@@ -11,7 +10,6 @@ public class GroundCheck : MonoBehaviour
 
     private void Start()
     {
-        jumpScript = GetComponentInParent<Jump>();
         jugador = GetComponentInParent<Jugador>();
     }
 
@@ -19,16 +17,7 @@ public class GroundCheck : MonoBehaviour
     {
         bool enSuelo = Physics2D.OverlapCircle(transform.position, radioDeteccion, capaSuelo);
 
-        if (enSuelo)
-        {
-            jumpScript.SetPuedeSaltar(true);
-            jugador.Datos.enSuelo = true;
-        }
-        else
-        {
-            jumpScript.SetPuedeSaltar(false);
-            jugador.Datos.enSuelo = false;
-        }
+        jugador.Datos.enSuelo = enSuelo;
     }
 
     private void OnDrawGizmosSelected()
