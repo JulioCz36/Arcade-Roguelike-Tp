@@ -19,7 +19,7 @@ MonoBehaviour:
   velocidad: 5
   sePuedeMover: 1
   velocidadRebote: {x: 7, y: 7}
-  tiempoPerdidaControl: 0.5
+  tiempoPerdidaControl: 0.3
   fuerzaSalto: 10
   dano: 1
   slashPrefab: {fileID: 950278801356973418, guid: 1214b18cc1e71ae46967ac747bb1952e, type: 3}

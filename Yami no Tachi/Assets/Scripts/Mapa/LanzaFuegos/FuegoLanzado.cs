@@ -2,6 +2,10 @@
 
 public class FuegoLanzado : MonoBehaviour
 {
+    [Header("Referencias")]
+    [SerializeField] private AudioClip impactoSFX;
+    [SerializeField] private AudioSource accionesAudioSource;
+
     [Header("Movimiento")]
     public float velocidad = 5f;
     private Rigidbody2D rb;
@@ -11,10 +15,12 @@ public class FuegoLanzado : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        accionesAudioSource.volume = 0.1f;
     }
 
     private void OnEnable()
     {
+        rb.bodyType = RigidbodyType2D.Dynamic;
         Mover();
     }
 
@@ -27,6 +33,10 @@ public class FuegoLanzado : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
+        accionesAudioSource.PlayOneShot(impactoSFX);
         if (other.CompareTag("Player"))
         {
             Jugador jugador = other.GetComponentInParent<Jugador>();

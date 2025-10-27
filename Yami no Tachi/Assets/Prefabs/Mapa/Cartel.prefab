@@ -176,6 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80a04e2544e1b9428e15130ecd3845f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idCartel: 
+  desbloqueaHabilidad: 0
   lineasDialogo:
   - "Aquel que busca ser liberado de este mundo, deber\xE1 probar su alma"
   - "Cinco fragmentos duermen esparcidos entre las ruinas\u2026\nRe\xFAnelos, y el
@@ -183,39 +185,8 @@ MonoBehaviour:
   - "Solo entonces, los pilares se alzar\xE1n, y el velo entre los mundos se abrir\xE1."
   - "Pero cuidado, viajero sin rostro\u2026\nEl camino hacia la libertad rara vez
     perdona."
-  uiDialogo: {fileID: 0}
   particula: {fileID: 5424505050824932106}
-  textoDialogo: {fileID: 0}
-  onAbrirDialogo:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: open
-          m_BoolArgument: 0
-        m_CallState: 2
-  onCerrarDialogo:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: cerrar
-          m_BoolArgument: 0
-        m_CallState: 2
+  uiDialogo: {fileID: 0}
 --- !u!1001 &4343173798785092785
 PrefabInstance:
   m_ObjectHideFlags: 0

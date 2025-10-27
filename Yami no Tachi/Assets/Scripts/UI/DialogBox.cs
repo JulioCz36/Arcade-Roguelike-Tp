@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class DialogBox : MonoBehaviour
 {
-    [SerializeField] private CartelInteractivo cartel;
+    [SerializeField] private UIDialogoController uiController;
     public void ActivarTexto()
     {
-        if (cartel != null)
-            cartel.MostrarTextoDialogo(); 
+        if (uiController != null)
+            uiController.MostrarTextoDialogo(); 
     }
-    public void DesactivarUI()
+    public void DesactivarBox()
     {
-        if (cartel != null)
-            cartel.DesactivarUI();
+        if (uiController != null)
+            uiController.DesactivarDialogoBox();
     }
 }

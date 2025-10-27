@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class Pilar : MonoBehaviour
 {
+    [Header("Referencias")]
+    [SerializeField] private AudioClip openSFX;
+    [SerializeField] private AudioSource accionesAudioSource;
+
     private Animator animator;
     private void Start()
     {
         animator = GetComponent<Animator>();
+        accionesAudioSource.volume = 1.0f;
     }
     public void CompletoBusqueda()
     {
@@ -13,22 +18,16 @@ public class Pilar : MonoBehaviour
     }
     public void CargarPilar()
     {
-        if (animator == null)
-        {
-            return;
-        }
         animator.SetTrigger("cargar");
+        accionesAudioSource.PlayOneShot(openSFX);
     }
     public void AbirPilar()
     {
-        if (animator == null)
-        {
-            return;
-        }
         animator.SetTrigger("abrir");
     }
     public void DestruirPilar()
     {
+        GameManager.Instancia.BloquearJugador(false);
         Destroy(gameObject);
     }
 }

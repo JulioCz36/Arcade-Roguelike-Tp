@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Pedestal : MonoBehaviour
 {
+    [Header("Referencias")]
+    [SerializeField] private AudioClip openSFX;
+    [SerializeField] private AudioSource accionesAudioSource;
     [SerializeField] private GameObject particula;
 
     private Pilar pilar;
@@ -18,6 +21,8 @@ public class Pedestal : MonoBehaviour
 
         SistemaProgresion.Instancia.OnFragmentoRecolectado += RevisarProgreso;
         particula.SetActive(false);
+
+        accionesAudioSource.volume = 0.3f;
     }
 
     private void OnDisable()
@@ -40,10 +45,6 @@ public class Pedestal : MonoBehaviour
         {
             jugadorCerca = true;
         }
-        if (jugadorCerca && puedeActivarse)
-        {
-            particula.SetActive(true);
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -54,8 +55,13 @@ public class Pedestal : MonoBehaviour
     }
     private void Update()
     {
+        if (puedeActivarse)
+        {
+            particula.SetActive(true);
+        }
         if (jugadorCerca && puedeActivarse && Input.GetButtonDown("Vertical"))
         {
+            GameManager.Instancia.BloquearJugador(true);
             particula.SetActive(false);
             animator.SetTrigger("interaccion");
             puedeActivarse = false;
@@ -63,7 +69,7 @@ public class Pedestal : MonoBehaviour
     }
     public void FinalizarActivacion()
     {
-
+        accionesAudioSource.PlayOneShot(openSFX);
         animator.SetBool("abierto", true);
     }
     public void AbrirPuerta()

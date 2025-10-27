@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class SeguirJugador : MonoBehaviour
 {
+    [Header("Referencias")]
+    [SerializeField] private AudioClip detectoSFX;
+    [SerializeField] private AudioSource movimietoAudioSource;
+    private bool sonidoDetectadoReproducido = false;
+
     public float radioBusqueda;
     public LayerMask capaJugador;
     public Transform transformJugador;
@@ -19,7 +24,6 @@ public class SeguirJugador : MonoBehaviour
     [Header("Ataque")]
     public float radioAtaque = 1.5f;
     public float tiempoEntreAtaques = 1.2f;
-    private float contadorAtaque;
     private bool puedeAtacar = true;
 
     private Rigidbody2D rb2d;
@@ -77,6 +81,12 @@ public class SeguirJugador : MonoBehaviour
 
     private void EstadoSiguiendo()
     {
+        if (!sonidoDetectadoReproducido)
+        {
+            movimietoAudioSource.PlayOneShot(detectoSFX);
+            sonidoDetectadoReproducido = true;
+        }
+
         animator.SetBool("walk", true);
         if (transformJugador == null)
         {
@@ -107,6 +117,7 @@ public class SeguirJugador : MonoBehaviour
         {
             estadoActual = EstadosMovimiento.Volviendo;
             transformJugador = null;
+            sonidoDetectadoReproducido = false;
         }
     }
 

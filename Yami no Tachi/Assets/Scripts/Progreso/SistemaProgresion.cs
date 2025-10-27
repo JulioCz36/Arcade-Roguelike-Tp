@@ -18,13 +18,6 @@ public class SistemaProgresion : MonoBehaviour
     public bool puedeAtacar = false;
     public bool puedePegarPared = false;
 
-    [Header("UI Victoria")]
-    [SerializeField] private MenuCondicion menuYouWin;
-
-    [Header("UI Derrota")]
-    [SerializeField] private MenuCondicion menuGameOver;
-
-
     private void Awake()
     {
         if (Instancia != null && Instancia != this)
@@ -74,14 +67,4 @@ public class SistemaProgresion : MonoBehaviour
                 break;
         }
     }
-
-    public void MarcarVictoria()
-    {
-        menuYouWin.Activar();
-    }
-    public void MarcarDerrota()
-    {
-        menuGameOver.Activar();
-    }
-
 }

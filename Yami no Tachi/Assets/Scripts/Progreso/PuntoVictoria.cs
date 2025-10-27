@@ -6,7 +6,7 @@ public class PuntoVictoria : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SistemaProgresion.Instancia.MarcarVictoria();
+            GameManager.Instancia.MarcarVictoria();
         }
     }
 }

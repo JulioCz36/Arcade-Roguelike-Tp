@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class WallClimb : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Jugador jugador;
 
     [Header("Detección de pared")]
     [SerializeField] private float radioDeteccion = 0.2f;
     [SerializeField] private LayerMask capaPared;
 
-    private bool isTouchingWall;
+    private Rigidbody2D rb;
+    private Jugador jugador;
+    //private Animator animator;
+
     private bool canWallJump = true;
     private int wallSide = 1;
 
@@ -20,36 +21,34 @@ public class WallClimb : MonoBehaviour
     {
         jugador = GetComponentInParent<Jugador>();
         rb = jugador.GetComponent<Rigidbody2D>();
+        //animator = jugador.GetComponent<Animator>();
     }
-
     private void Update()
     {
-        Collider2D paredDetectada = Physics2D.OverlapCircle(transform.position, radioDeteccion, capaPared);
-        isTouchingWall = paredDetectada != null;
 
-        if (isTouchingWall && SistemaProgresion.Instancia.puedePegarPared)
-            wallCoyoteTimer = wallCoyoteTime;
-        else
-            wallCoyoteTimer -= Time.deltaTime;
+        Collider2D paredDetectada = Physics2D.OverlapCircle(transform.position, radioDeteccion, capaPared);
+
+        jugador.Datos.estaEnPared = paredDetectada;
+
+        if (paredDetectada)
+            wallSide = (transform.position.x < paredDetectada.transform.position.x) ? 1 : -1;
 
         bool intentandoHaciaPared = Mathf.Sign(Input.GetAxisRaw("Horizontal")) == wallSide;
 
-        if (isTouchingWall && intentandoHaciaPared && !jugador.Datos.enSuelo && SistemaProgresion.Instancia.puedePegarPared)
-        {
-            jugador.Datos.estaEnPared = true;
+        //animator.SetBool("isWallClimbing", jugador.Datos.estaEnPared && SistemaProgresion.Instancia.puedePegarPared);
 
+        if (SistemaProgresion.Instancia.puedePegarPared && paredDetectada && intentandoHaciaPared && !jugador.Datos.enSuelo)
+        {
             rb.gravityScale = 0f;
             rb.linearVelocity = new Vector2(0, -jugador.Datos.velocidadDesliz);
+            wallCoyoteTimer = wallCoyoteTime;
         }
         else
         {
-            if (jugador.Datos.estaEnPared)
-            {
-                jugador.Datos.estaEnPared = false;
-                rb.gravityScale = jugador.Datos.gravedadNormal;
-            }
+            rb.gravityScale = jugador.Datos.gravedadNormal;
+            wallCoyoteTimer -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Jump") && canWallJump && (jugador.Datos.estaEnPared || wallCoyoteTimer > 0))
+        if (Input.GetButtonDown("Jump") && canWallJump && !jugador.Datos.enSuelo && (paredDetectada || wallCoyoteTimer > 0) && SistemaProgresion.Instancia.puedePegarPared)
         {
             canWallJump = false;
             jugador.Datos.estaEnPared = false;
@@ -70,10 +69,7 @@ public class WallClimb : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (transform != null)
-        {
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(transform.position, radioDeteccion);
-        }
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, radioDeteccion);
     }
 }

@@ -13,8 +13,8 @@ public class Pinche : MonoBehaviour
             if (jugador != null)
             {
                 Vector2 direccionGolpe = new(0,0);
-                RespawnManager.Instance.RespawnearJugador(jugador);
                 jugador.modificarCorazones(-dano, direccionGolpe);
+                RespawnManager.Instance.RespawnearJugador(jugador);
             }
         }
     }

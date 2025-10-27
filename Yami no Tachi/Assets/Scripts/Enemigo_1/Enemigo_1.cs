@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Enemigo_1 : MonoBehaviour
 {
+    [Header("Referencias")]
+    [SerializeField] private AudioClip hitSFX;
+    [SerializeField] private AudioSource accionesAudioSource;
 
     [Header("Vida")]
     [SerializeField] private int vida = 3;
@@ -16,10 +19,14 @@ public class Enemigo_1 : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        accionesAudioSource.volume  = 0.5f;
     }
 
     public void RecibirDanio(int dano, Transform sender)
     {
+        if (accionesAudioSource.isPlaying) return;
+        accionesAudioSource.PlayOneShot(hitSFX);
+
         vida -= dano;
         Retroceso(sender);
 
